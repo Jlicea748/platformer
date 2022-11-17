@@ -32,7 +32,6 @@ function initBattle() {
     document.querySelector('#attacksBox').append(button)
   })
 
-  // our event listeners for our buttons (attack)
   document.querySelectorAll('button').forEach((button) => {
     button.addEventListener('click', (e) => {
       const selectedAttack = attacks[e.currentTarget.innerHTML]
@@ -66,7 +65,6 @@ function initBattle() {
         })
       }
 
-      // draggle or enemy attacks right here
       const randomAttack =
         draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)]
 
