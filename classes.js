@@ -138,16 +138,16 @@ class Monster extends Sprite {
     recipient.health -= attack.damage
 
     switch (attack.name) {
-      case 'Fireball':
-        audio.initFireball.play()
-        const fireballImage = new Image()
-        fireballImage.src = './img/fireball.png'
-        const fireball = new Sprite({
+      case 'Fireblast':
+        audio.initFireblast.play()
+        const fireblastImage = new Image()
+        fireblastImage.src = './img/fireblast.png'
+        const fireblast = new Sprite({
           position: {
             x: this.position.x,
             y: this.position.y
           },
-          image: fireballImage,
+          image: fireblastImage,
           frames: {
             max: 4,
             hold: 10
@@ -155,14 +155,14 @@ class Monster extends Sprite {
           animate: true,
           rotation
         })
-        renderedSprites.splice(1, 0, fireball)
+        renderedSprites.splice(1, 0, fireblast)
 
-        gsap.to(fireball.position, {
+        gsap.to(fireblast.position, {
           x: recipient.position.x,
           y: recipient.position.y,
           onComplete: () => {
             // Enemy actually gets hit
-            audio.fireballHit.play()
+            audio.fireblastHit.play()
             gsap.to(healthBar, {
               width: recipient.health + '%'
             })
@@ -185,7 +185,7 @@ class Monster extends Sprite {
         })
 
         break
-      case 'Tackle':
+      case 'Pound':
         const tl = gsap.timeline()
 
         let movementDistance = 20
@@ -199,7 +199,7 @@ class Monster extends Sprite {
             duration: 0.1,
             onComplete: () => {
               // Enemy actually gets hit
-              audio.tackleHit.play()
+              audio.poundHit.play()
               gsap.to(healthBar, {
                 width: recipient.health + '%'
               })
